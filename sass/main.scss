@@ -1,4 +1,5 @@
-$gray-base: #222;
+$gray-base: #223;
+$body-bg: #eef;
 $brand-primary: #FFBA08;
 $brand-success: #136F63;
 $brand-warning: #032B43;
@@ -6,18 +7,37 @@ $brand-info: #1F60AF;
 $brand-info-dark: darken($brand-info, 10%);
 $brand-danger: #CE2200;
 $font-family-sans-serif: 'Fira Sans', sans-serif;
-$headings-font-weight: 700;
-$grid-gutter-width: 30px;
-$container-large-desktop: (1040px + $grid-gutter-width) !default;
-$navbar-height: 108px;
-$navbar-inverse-bg: $gray-base;
+$headings-font-weight: 900;
+$grid-gutter-width: 40px;
+$container-large-desktop: (940px + $grid-gutter-width) !default;
+$navbar-height: 40px;
+$siteHeaderBG: #223;
+$siteHeaderActive: #445;
+$navbar-inverse-bg: $siteHeaderActive;
 $font-size-base: 14px;
 @import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-/*
- http://www.palettable.io/e5c215-1F60AF-CE2200-0B705A-B39334
-*/
-//custom vars
 $sideNavWidth: 130px;
+
+@mixin mainPagesHeader {
+  padding: 25vh 0 30vh;
+  color: #fff;
+  .entry-title {
+    font-size: 5em;
+    text-align: center;
+  }
+}
+
+@mixin background-opacity($color) {
+    $red: red($color);
+    $green: green($color);
+    $blue: blue($color);
+    background: rgba($red, $green, $blue, .5);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
 
 .site-content {
     -webkit-transition: -webkit-transform .28s, opacity .28s;
@@ -33,163 +53,162 @@ $sideNavWidth: 130px;
     opacity: 0;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  // padding-top: $navbar-height;
-}
-
 .site-header {
   position: fixed;
-  margin-bottom: 0;
   top: 0;
+  margin-bottom: 0;
   width: $sideNavWidth;
   height: 100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   font-size: 1em;
-  background-color: #222;
-  box-shadow: inset -3px 0px 0px #555;
+  background-color: $siteHeaderBG;
   z-index: 1000;
-  list-style: none;
-  padding-left: 0;
+  box-shadow: 2px 0px 40px rgba(2,2,3,0.5);
+
+  .logo {margin: 25px 10px;}
+
+  .menu-primary-menu-container {
+    height: 65%;
+    ul {
+      height: 100%;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 25%;
+
+        &.current-menu-item {
+          a {
+            color: #fff;
+          }
+        }
+        &.current-menu-item {
+          background-color: $siteHeaderActive;
+        }
+        &.current-menu-item.menu-item-70 {
+          box-shadow: inset -5px 0px 0px lighten($brand-info, 20%);
+        }
+        &.current-menu-item.menu-item-69 {
+          box-shadow: inset -5px 0px 0px lighten($brand-primary, 20%);
+        }
+        &.current-menu-item.menu-item-68 {
+          box-shadow: inset -5px 0px 0px lighten($brand-success, 20%);
+        }
+      }
+
+    }
+  }
 
   a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-decoration: none;
-    height: 25%;
     font-size: 1.2em;
-    color: #a9a9a9;
-
-    &.active{
-      color: #fff;
-    }
-    &.active.about {
-      background-color: lighten($brand-info, 10%);
-      border-right: 3px solid lighten($brand-info, 40%);
-    }
-    &.active.personal-protection-devices {
-      background-color: lighten($text-color, 10%);
-      border-right: 3px solid lighten($text-color, 40%);
-    }
-    &.active.self-defense {
-      background-color: lighten($brand-danger, 10%);
-      border-right: 3px solid lighten($brand-danger, 40%);
-    }
-    &.active.property-protection {
-      background-color: $brand-success;
-      background-color: lighten($brand-success, 2%);
-      border-right: 3px solid lighten($brand-success, 6%);
-    }
+    color: #a9a9b1;
 
     i {display: block;}
   }
 }
 
+.secondary-nav {
+  padding-left: $sideNavWidth;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0;
+}
+
+.secondary-nav .navbar-nav > li > a {
+    color: #bbb;
+    font-size: 1em;
+}
+
 .site-content {
   padding-left: $sideNavWidth;
-
-  .container  {
-    padding-top: 150px;
-    padding-bottom: 150px;
-  }
-
   .row {
     margin-top: 60px;
     margin-bottom: 60px;
   }
-}
-
-h1 {font-size: 100px;}
-
-p, ul {
-  font-size: 16px;
-}
-
-.entry-header {padding: 25vh 25px;}
-
-.navbar-inverse .navbar-nav > li > a {
-    color: #eee;
-    font-size: 1em;
-}
-
-.navbar-brand {
-  position: relative;
-  top: -34px;
-  left: 7px;
-
-  img {
-      width: 90px;
+  .entry-content {
+    padding: 100px 0;
   }
 }
 
-.jumbotron {
-  background: url(../images/karate.jpg) no-repeat; background-size: cover;
-  padding-bottom: 0 !important;
-  margin-bottom: 0;
+.home {
+  .jumbotron {
+    background: url(images/karate.jpg) no-repeat; background-size: cover;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0;
+    color: #fff;
 
-  img {
-    width: 250px;
-    filter: drop-shadow(0px 1px 4px rgba(0,0,0,.6));
-  }
+    .jumbo-inner {
+      padding: 30vh 0;
+      text-shadow: 1px 1px 12px $gray-base;
+      @include background-opacity($brand-primary);
+    }
 
-  .jumbo-inner {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e8c515+0,ce9f14+100 */
-    background: rgb(232,197,21);
-    background: -moz-linear-gradient(top, rgba(232,197,21,.8) 0%, rgba(206,159,20,.8) 100%);
-    background: -webkit-linear-gradient(top, rgba(232,197,21,.8) 0%,rgba(206,159,20,.8) 100%);
-    background: linear-gradient(to bottom, rgba(232,197,21,.8) 0%,rgba(206,159,20,.8) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8c515', endColorstr='#ce9f14',GradientType=0 );
-    height: 100%;
-  }
-}
-
-.peace-saftey-section {
-  color: #cbdbe2;
-  background: $brand-info;
-  background: -moz-linear-gradient(top, $brand-info 0%, $brand-info-dark 100%);
-  background: -webkit-linear-gradient(top, $brand-info 0%, $brand-info-dark 100%);
-  background: linear-gradient(to bottom, $brand-info 0%, $brand-info-dark 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8c515', endColorstr='#ce9f14',GradientType=0 );
-
-  h2,
-  strong,
-  ul,
-  .media-heading,
-  figcaption {
-    color: $brand-primary;
-  }
-  small {color:#bbb;}
-
-  .jim-bio-row {
-    background: rgba(255,255,255, .1);
-    padding: 25px;
-    border-top: 1px solid #cbdbe2;
-    border-bottom: 1px solid #cbdbe2;
-    box-shadow: 0px 3px 25px rgba(0,0,0,.35);
+    img {
+      width: 250px;
+      filter: drop-shadow(0px 1px 4px rgba(0,0,0,.6));
+    }
   }
 }
 
-
-.property-protection-section {
-  // background-color: $brand-success;
+.page-id-59 {
+  .entry-header {
+    background: $brand-info;
+    @include mainPagesHeader;
+  }
 }
 
+.page-id-64 {
+  .entry-header {
+    background: $brand-primary;
+    @include mainPagesHeader;
+  }
+}
 
-.section-contact-us {
-  background-color: #eee;
+.page-id-66 {
+  .entry-header {
+    background: $brand-success;
+    @include mainPagesHeader;
+  }
+}
+
+.widget-wrapper {
+  background: $siteHeaderActive;
+  color: #fff;
+}
+
+.site-footer {
+  color: #fff;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  background: $gray-base;
+}
+
+// WooCommerce Tweaks
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active,
+.wc-tab {
+  background: transparent;
+  &:before,
+  &:after {content: none;}
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+  border-bottom-color: $body-bg;
+}
+
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+  color: #fff;
+  background-color: $brand-primary;
 }
 
 /*desktop-first*/
 @media (max-width: 767px) {
-
   body{padding-bottom: 100px;}
 
   #fullpage {

@@ -41,22 +41,36 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'smart_defenses' ); ?></button> -->
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+		<?php wp_nav_menu( array(
+			'theme_location' => 'primary',
+		 	'menu_id' => 'primary-menu',
+			'container' => 'nav'
+		)); ?>
 	</header><!-- #masthead -->
 
+	<nav class="navbar navbar-inverse secondary-nav">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#secondary-nav-collapse" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<?php
+				wp_nav_menu( array(
+						'menu'              => 'secondary',
+						'theme_location'    => 'secondary',
+						'depth'             => 2,
+						'container'         => 'div',
+						'container_class'   => 'collapse navbar-collapse navbar-right',
+						'container_id'      => 'secondary-nav-collapse',
+						'menu_class'        => 'nav navbar-nav',
+						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+						'walker'            => new wp_bootstrap_navwalker())
+				); ?>
+		</div>
+	</nav>
+
 	<div id="content" class="site-content">
-
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img alt="Brand" src="...">
-          </a>
-        </div>
-      </div>
-    </nav>
-
-    <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'smart_defenses' ); ?></a>

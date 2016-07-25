@@ -43,9 +43,12 @@ function smart_defenses_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'video' ) );
 
+	require_once('wp_bootstrap_navwalker.php');
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'smart_defenses' ),
+		'secondary' => esc_html__( 'Secondary', 'smart_defenses' ),
 	) );
 
 	/*
@@ -94,8 +97,26 @@ function woocommerce_support() {
  */
 function smart_defenses_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'smart_defenses' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Footer 1', 'smart_defenses' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Add widgets here.', 'smart_defenses' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 2', 'smart_defenses' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Add widgets here.', 'smart_defenses' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 3', 'smart_defenses' ),
+		'id'            => 'footer-3',
 		'description'   => esc_html__( 'Add widgets here.', 'smart_defenses' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
@@ -109,15 +130,10 @@ add_action( 'widgets_init', 'smart_defenses_widgets_init' );
  * Enqueue scripts and styles.
  */
 function smart_defenses_scripts() {
+	wp_enqueue_style('roboto-font', "https://fonts.googleapis.com/css?family=Roboto:400,700", false);
 	wp_enqueue_style( 'smart_defenses-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'smart_defenses-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-
-	//STYLES
-	wp_enqueue_style('roboto-font', "https://fonts.googleapis.com/css?family=Roboto:400,700", false);
-	wp_enqueue_style( 'fullpage-css', get_template_directory_uri() . '/node_modules/fullpage.js/jquery.fullPage.css');
-
 
 	wp_enqueue_script( 'smart_defenses-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -125,19 +141,17 @@ function smart_defenses_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	// ONLY USE FULLPAGEJS ON HOMEPAGE
-	// wp_register_script( 'fullpage-js', get_template_directory_uri() . '/node_modules/fullpage.js/jquery.fullPage.js', array( 'jquery' ), '', true );
-//	wp_register_script( 'frontpage-js', get_template_directory_uri() . '/js/front-page.js', array( 'jquery' ), '', true );
+	function my_smoothstate_enqueue() {
+	    // wp_register_script('smoothState', get_template_directory_uri() . "/js/vendor/jquery.smoothState.js", array('jquery'), null, true);
+			wp_register_script( 'smoothstate-js', get_template_directory_uri() . '/node_modules/smoothstate/src/jquery.smoothState.js', array( 'jquery' ), null, true );
+	    wp_enqueue_script('smoothstate-js');
+			wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '', true );
 
-	if(is_front_page() ) {
-		wp_enqueue_script( 'fullpage-js');
-		wp_enqueue_script( 'fullpage-slimscroll-js');
-		// wp_enqueue_script( 'frontpage-js');
 	}
+	if (!is_admin()) add_action("wp_enqueue_scripts", "my_smoothstate_enqueue", 11);
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js', array( 'jquery' ), '', true );
-	wp_enqueue_script( 'smoothstate-js', get_template_directory_uri() . '/node_modules/smoothstate/src/jquery.smoothState.js', array( 'jquery' ), '', true );
-	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '', true );
+
 }
 add_action( 'wp_enqueue_scripts', 'smart_defenses_scripts' );
 
@@ -165,3 +179,29 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * WooCommerce Tweaks
+ */
+function wcs_woo_remove_reviews_tab($tabs) {
+	unset($tabs['reviews']);
+	return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'wcs_woo_remove_reviews_tab', 98 );
+
+function wc_remove_related_products( $args ) {
+	return array();
+}
+add_filter('woocommerce_related_products_args','wc_remove_related_products', 10);
+
+
+function wc_shop_wrap_start() {
+    echo '<div class="container">';
+}
+add_action( 'woocommerce_before_main_content', 'wc_shop_wrap_start' );
+
+
+function wc_shop_wrap_end() {
+    echo '</div>';
+}
+add_action( 'woocommerce_after_main_content', 'wc_shop_wrap_end' );

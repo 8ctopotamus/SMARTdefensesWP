@@ -7,11 +7,37 @@
  * @package smart_defenses
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
+if (
+	is_active_sidebar( 'footer-1' ) && is_active_sidebar( 'footer-2' ) &&
+	is_active_sidebar( 'footer-3' )
+) {
+	$colCount = 4;
 }
-?>
+elseif (
+	is_active_sidebar( 'footer-1' ) && is_active_sidebar( 'footer-2' ) ||
+	is_active_sidebar( 'footer-1' ) && is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-2' ) && is_active_sidebar( 'footer-3' )
+) {
+	$colCount = 6;
+} elseif (
+	is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) ||  is_active_sidebar( 'footer-2' )
+) {
+	$colCount = 12;
+} else {
+	return;
+} ?>
 
-<aside id="secondary" class="widget-area" role="complementary">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+<div class="widget-wrapper">
+	<div class="container">
+		<div class="row">
+			<aside id="secondary" class="widget-area col-sm-<?php echo $colCount; ?>" role="complementary">
+				<?php dynamic_sidebar( 'footer-1' ); ?>
+			</aside><!-- #secondary -->
+			<aside id="secondary" class="widget-area col-sm-<?php echo $colCount; ?>" role="complementary">
+				<?php dynamic_sidebar( 'footer-2' ); ?>
+			</aside><!-- #secondary -->
+			<aside id="secondary" class="widget-area col-sm-<?php echo $colCount; ?>" role="complementary">
+				<?php dynamic_sidebar( 'footer-3' ); ?>
+			</aside><!-- #secondary -->
+		</div>
+	</div>
+</div>
