@@ -10,14 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "jquery": "~2.1.1",
-    "smoothstate": "^0.7.2"
+    "jquery": "~2.1.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-livereload": "^3.8.1",
+    "gulp-minify": "0.0.13",
     "gulp-sass": "^2.3.2",
     "merge-stream": "^1.0.0"
   }

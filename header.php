@@ -22,8 +22,10 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
+
 	<header id="masthead" class="site-header" role="banner">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" class="logo" alt="SMART Defenses" /></a>
+
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" /></a>
 
 		<div class="site-branding sr-only">
 			<?php
@@ -57,6 +59,11 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				
+				<!--<a href="<?php echo esc_url( home_url( '/' ) ); ?>" >-->
+				<!--	<img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" />-->
+				<!--</a>-->
+				
 			</div>
 			<?php
 				wp_nav_menu( array(
@@ -73,4 +80,4 @@
 		</div>
 	</nav>
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content main-wrapper">
