@@ -21,35 +21,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-
-	<header id="masthead" class="site-header" role="banner">
-
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" /></a>
-
-		<div class="site-branding sr-only">
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description sr-only"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
-
-		<?php wp_nav_menu( array(
-			'theme_location' => 'primary',
-		 	'menu_id' => 'primary-menu',
-			'container' => 'nav'
-		)); ?>
-	</header><!-- #masthead -->
-
+	
 	<nav class="navbar navbar-inverse secondary-nav">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -59,10 +31,31 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+					
+				<a class="site-branding" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<div class="navbar-brand-custom" rel="home">
+						<img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" />
+					</div>
+					
+					<!-- flex item -->
+					<div>
+						<?php
+						if ( is_front_page() && is_home() ) : ?>
+							<h1 class="site-title h3"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php else : ?>
+							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+						<?php
+						endif;
+					
+						$description = get_bloginfo( 'description', 'display' );
+						if ( $description || is_customize_preview() ) : ?>
+							<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+						<?php
+						endif; ?>
+					</div>
+					<!-- /end div item -->
+				</a>
 				
-				<!--<a href="<?php echo esc_url( home_url( '/' ) ); ?>" >-->
-				<!--	<img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" />-->
-				<!--</a>-->
 				
 			</div>
 			<?php
@@ -79,5 +72,19 @@
 				); ?>
 		</div>
 	</nav>
+	
+<div id="page" class="site">
+	
+	<header id="masthead" class="site-header" role="banner">
+    <!--<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" /></a>-->
+		
+		<div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+			<?php wp_nav_menu( array(
+				'theme_location' => 'primary',
+			 	'menu_id' => 'primary-menu',
+				'container' => 'nav'
+			)); ?>
+		</div>
+	</header><!-- #masthead -->
 
 	<div id="content" class="site-content main-wrapper">

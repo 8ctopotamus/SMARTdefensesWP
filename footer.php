@@ -18,6 +18,8 @@
 		</footer><!-- #colophon -->
 
 	</div><!-- #content -->
+
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
