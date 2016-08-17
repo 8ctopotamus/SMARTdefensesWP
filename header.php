@@ -40,8 +40,8 @@
 					<!-- flex item -->
 					<div>
 						<?php
-						if ( is_front_page() && is_home() ) : ?>
-							<h1 class="site-title h4"><?php bloginfo( 'name' ); ?></h1>
+						if ( is_front_page() ) : ?>
+							<h1 class="site-title h2"><?php bloginfo( 'name' ); ?></h1>
 						<?php else : ?>
 							<p class="site-title h4"><?php bloginfo( 'name' ); ?></p>
 						<?php
@@ -49,7 +49,7 @@
 					
 						$description = get_bloginfo( 'description', 'display' );
 						if ( $description || is_customize_preview() ) : ?>
-							<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+							<p class="site-description <?php if (is_front_page()) { echo "sr-only"; } ?>"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 						<?php
 						endif; ?>
 					</div>

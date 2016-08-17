@@ -43,25 +43,27 @@ endwhile; // End of the loop.
 </div>
 </div>
 
-<div style="background: #445; color: white;">
+<div class="jim-bio">
 	<div class="container">
-<div class="row">
-<div class="col-sm-8">
-<h2>WHY IS SMART Defenses YOUR BEST PROTECTION?</h2>
-Besides being dedicated to the well-being of people, the following qualifications enable me to help you be safe and protected.
-<ul>
- 	<li>2 years as an F.B.I. agent</li>
- 	<li>4 years of martial arts training</li>
- 	<li>1 year of specialized self-defense training</li>
- 	<li>18 years as a security officer</li>
-</ul>
-<strong>SMART Defenses</strong> is primarily about helping you and the people that are important to you. Years of research and ingenuity have been invested in the development of the unique SMART Defenses program. Retired police officers, military personnel and an expert F.B.I. agent have contributed exceptional knowledge and expertise. As a result, SMART Defenses has the very best of self-defense strategy, technology and martial arts techniques. The following self-defense devices will empower you to be safe from assault, rape, robbery, carjacking and loss of life. May you enjoy a safe, happy, fulfilled life.
-<p><em>~Jim</em></p>
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>WHY IS SMART Defenses YOUR BEST PROTECTION?</h2>
+        Besides being dedicated to the well-being of people, the following qualifications enable me to help you be safe and protected.
+        <ul>
+         	<li>2 years as an F.B.I. agent</li>
+         	<li>4 years of martial arts training</li>
+         	<li>1 year of specialized self-defense training</li>
+         	<li>18 years as a security officer</li>
+        </ul>
+        <strong>SMART Defenses</strong> is primarily about helping you and the people that are important to you. Years of research and ingenuity have been invested in the development of the unique SMART Defenses program. Retired police officers, military personnel and an expert F.B.I. agent have contributed exceptional knowledge and expertise. As a result, SMART Defenses has the very best of self-defense strategy, technology and martial arts techniques. The following self-defense devices will empower you to be safe from assault, rape, robbery, carjacking and loss of life. May you enjoy a safe, happy, fulfilled life.
+        <p><em>~Jim</em></p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <img class="img-responsive center-block wp-image-116 size-full" src="<?php echo bloginfo('template_directory'); ?>/images/jim-lees.jpg" alt="Jim Lees" /> Jim Lees
+      </div>
+    </div>
+  </div>
 </div>
-<div class="col-sm-4 text-center"><img class="img-responsive center-block wp-image-116 size-full" src="<?php echo bloginfo('template_directory'); ?>/images/jim-lees.jpg" alt="Jim Lees" /> Jim Lees
-</div>
-</div>
-
 
 <div class="row">
   <div class="col-md-6">
