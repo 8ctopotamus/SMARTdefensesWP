@@ -3802,7 +3802,7 @@ tbody.collapse.in {
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 24px; }
-  @media (max-width: 991px) {
+  @media (max-width: 992px) {
     .navbar-nav .open .dropdown-menu {
       position: static;
       float: none;
@@ -3876,7 +3876,7 @@ tbody.collapse.in {
       margin-left: 0; }
     .navbar-form .has-feedback .form-control-feedback {
       top: 0; } }
-  @media (max-width: 991px) {
+  @media (max-width: 992px) {
     .navbar-form .form-group {
       margin-bottom: 5px; }
       .navbar-form .form-group:last-child {
@@ -3965,7 +3965,7 @@ tbody.collapse.in {
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: #e7e7e7;
     color: #555; }
-  @media (max-width: 991px) {
+  @media (max-width: 992px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
       color: #777; }
       .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -4023,7 +4023,7 @@ tbody.collapse.in {
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: #0d0d13;
     color: #fff; }
-  @media (max-width: 991px) {
+  @media (max-width: 992px) {
     .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
       border-color: #0d0d13; }
     .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
@@ -5837,8 +5837,11 @@ ul {
 .blog .entry-content {
   padding: 25px 0; }
 
+.navbar-header {
+  width: 45%; }
+
 .site-branding {
-  margin-top: 15px;
+  margin-top: 17px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5847,8 +5850,9 @@ ul {
   justify-content: space-around;
   -webkit-align-items: center;
   -ms-flex-align: center;
-  align-items: center;
-  width: auto; }
+  align-items: center; }
+  .site-branding .site-description {
+    color: rgba(255, 255, 255, 0.7); }
 
 .navbar-brand-custom {
   display: block;
@@ -5873,7 +5877,8 @@ ul {
     text-align: center;
     font-size: .77em; }
     .site-header .menu-primary-menu-container ul {
-      height: 78vh;
+      width: 130px;
+      height: 70%;
       padding-left: 0;
       list-style: none;
       display: -webkit-flex;
@@ -5900,6 +5905,10 @@ ul {
         -ms-flex-positive: 1;
         flex-grow: 1;
         height: 33.333333%;
+        -webkit-transition: all 135ms ease-in;
+        -moz-transition: all 135ms ease-in;
+        -ms-transition: all 135ms ease-in;
+        -o-transition: all 135ms ease-in;
         transition: all 135ms ease-in; }
         .site-header .menu-primary-menu-container ul li.menu-item-70 a:before {
           background-image: url(images/pepper-spray-icon.svg);
@@ -5951,6 +5960,10 @@ ul {
           text-decoration: none;
           font-size: 1.2em;
           color: #a9a9b1;
+          -webkit-transition: all 135ms ease-in;
+          -moz-transition: all 135ms ease-in;
+          -ms-transition: all 135ms ease-in;
+          -o-transition: all 135ms ease-in;
           transition: all 135ms ease-in; }
           .site-header .menu-primary-menu-container ul li a i,
           .site-header .menu-primary-menu-container ul li a::before i {
@@ -5982,6 +5995,10 @@ ul {
 .secondary-nav .navbar-nav > li > a {
   color: #bbb;
   font-size: 1em;
+  -webkit-transition: all 135ms ease-in;
+  -moz-transition: all 135ms ease-in;
+  -ms-transition: all 135ms ease-in;
+  -o-transition: all 135ms ease-in;
   transition: all 135ms ease-in; }
 
 .home .jumbotron {
@@ -6108,4 +6125,11 @@ ul {
             .site-header .menu-primary-menu-container ul li.current-menu-item.menu-item-69 {
               box-shadow: inset 0px 5px 0px #ffd66e; }
             .site-header .menu-primary-menu-container ul li.current-menu-item.menu-item-68 {
-              box-shadow: inset 0px 5px 0px #22c6b1; } }
+              box-shadow: inset 0px 5px 0px #22c6b1; }
+  .navbar-header {
+    width: 100%; } }
+
+@media (max-width: 480px) {
+  .site-branding .site-title,
+  .site-branding .site-description {
+    display: none; } }

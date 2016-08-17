@@ -14,8 +14,10 @@ $navbar-inverse-bg: $siteHeaderActive;
 
 $headings-font-weight: 900;
 $font-family-sans-serif: 'Fira Sans', sans-serif;
-$screen-sm: 992px;
 
+$screen-sm: 992px;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($screen-sm);
 $navbar-height:                    140px;
 $navbar-margin-bottom:             0;
 $navbar-border-radius:             0;
@@ -99,13 +101,20 @@ ul {list-style-type: square;}
     padding: 25px 0;
 }
 
+.navbar-header {
+  width: 45%;
+}
+
 .site-branding {
   // margin-top: $navbar-height / 4;
-  margin-top: 15px;
+  margin-top: 17px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: auto;
+  
+  .site-description {
+    color: rgba(255,255,255,.7);
+  }
 }
 
 .navbar-brand-custom {
@@ -138,7 +147,8 @@ ul {list-style-type: square;}
     font-size: .77em;
     
     ul {
-      height: 78vh;
+      width: $sideNavWidth;
+      height: 70%;
       padding-left: 0;
       list-style: none;
       display: flex;
@@ -368,6 +378,19 @@ ul {list-style-type: square;}
         }
   
       }
+    }
+  }
+  
+  .navbar-header {
+    width: 100%;
+  }
+}
+
+@media (max-width: $screen-xs) { 
+  .site-branding {
+    .site-title,
+    .site-description {
+      display: none;
     }
   }
 }

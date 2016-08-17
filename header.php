@@ -41,9 +41,9 @@
 					<div>
 						<?php
 						if ( is_front_page() && is_home() ) : ?>
-							<h1 class="site-title h3"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<h1 class="site-title h4"><?php bloginfo( 'name' ); ?></h1>
 						<?php else : ?>
-							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+							<p class="site-title h4"><?php bloginfo( 'name' ); ?></p>
 						<?php
 						endif;
 					
@@ -78,7 +78,7 @@
 	<header id="masthead" class="site-header" role="banner">
     <!--<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><img src="<?php bloginfo('template_directory'); ?>/images/smartdefenses-logo.svg" alt="SMART Defenses" /></a>-->
 		
-		<div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+		<div data-spy="affix" data-offset-top="0">
 			<?php wp_nav_menu( array(
 				'theme_location' => 'primary',
 			 	'menu_id' => 'primary-menu',
